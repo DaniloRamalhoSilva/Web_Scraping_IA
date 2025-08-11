@@ -51,3 +51,6 @@ páginas).
 • Implementação coerente da análise com IA.
 • Qualidade do código e organização.
 • Clareza e profundidade das análises apresentadas no relatório.
+
+
+
