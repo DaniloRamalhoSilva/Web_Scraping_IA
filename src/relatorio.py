@@ -5,6 +5,7 @@ import pandas as pd
 
 def gerar_relatorio(df: pd.DataFrame, resumo: dict, caminho_pdf: str) -> None:
     """Generate a simple PDF report with summary information."""
+    print(f"Gerando relatório PDF em {caminho_pdf}...")
     with PdfPages(caminho_pdf) as pdf:
         fig, ax = plt.subplots(figsize=(8.27, 11.69))  # A4 size
         ax.axis("off")
@@ -24,3 +25,4 @@ def gerar_relatorio(df: pd.DataFrame, resumo: dict, caminho_pdf: str) -> None:
         ax.text(0.1, 0.9, "\n".join(lines), va="top", fontsize=12)
         pdf.savefig(fig)
         plt.close(fig)
+    print("Relatório PDF gerado.")
