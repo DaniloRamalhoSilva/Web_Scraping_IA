@@ -4,11 +4,16 @@ import pandas as pd
 def classificar_valor(df: pd.DataFrame) -> pd.DataFrame:
     """Classify books as high or low value based on median price."""
     mediana = df["preco"].median()
-    df["categoria_valor"] = df["preco"].apply(lambda x: "Alto Valor" if x > mediana else "Baixo Valor")
+    print(f"Classificando livros com base na mediana de preço {mediana:.2f}...")
+    df["categoria_valor"] = df["preco"].apply(
+        lambda x: "Alto Valor" if x > mediana else "Baixo Valor"
+    )
+    print("Classificação concluída.")
     return df
 
 
 def resumo_estatistico(df: pd.DataFrame) -> dict:
+    print("Gerando resumo estatístico...")
     return {
         "total_livros": len(df),
         "preco_medio": df["preco"].mean(),

@@ -21,11 +21,14 @@ def _parse_rating(element) -> int:
 
 def scrape_books() -> pd.DataFrame:
     """Scrape book data from the Books to Scrape website."""
+    print("Iniciando coleta de dados...")
     driver = init_driver()
     driver.get(BASE_URL)
     records: List[Dict] = []
+    page = 1
 
     while True:
+        print(f"Coletando dados da página {page}...")
         books = driver.find_elements(By.CSS_SELECTOR, "article.product_pod")
         for book in books:
             title = book.find_element(By.CSS_SELECTOR, "h3 a").get_attribute("title")
@@ -33,17 +36,21 @@ def scrape_books() -> pd.DataFrame:
             price = float(re.sub(r"[^0-9.]", "", price_text))
             availability = book.find_element(By.CSS_SELECTOR, "p.instock.availability").text.strip()
             rating = _parse_rating(book.find_element(By.CSS_SELECTOR, "p.star-rating"))
-            records.append({
-                "titulo": title,
-                "preco": price,
-                "disponibilidade": availability,
-                "classificacao": rating,
-            })
+            records.append(
+                {
+                    "titulo": title,
+                    "preco": price,
+                    "disponibilidade": availability,
+                    "classificacao": rating,
+                }
+            )
         try:
             next_link = driver.find_element(By.CSS_SELECTOR, "li.next a")
             next_link.click()
+            page += 1
         except NoSuchElementException:
             break
 
     driver.quit()
+    print(f"Coleta finalizada. Total de {len(records)} livros coletados.")
     return pd.DataFrame(records)

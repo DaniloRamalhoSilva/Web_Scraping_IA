@@ -14,12 +14,16 @@ def init_driver(headless: bool = True) -> webdriver.Chrome:
     headless: bool
         Whether to run Chrome in headless mode.
     """
+    print("Inicializando WebDriver...")
     options = Options()
     if headless:
         options.add_argument("--headless")
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    driver = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()), options=options
+    )
     driver.implicitly_wait(10)
     logging.getLogger("selenium").setLevel(logging.WARNING)
+    print("WebDriver pronto.")
     return driver

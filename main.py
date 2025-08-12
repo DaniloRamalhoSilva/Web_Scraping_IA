@@ -7,8 +7,12 @@ from src.relatorio import gerar_relatorio
 
 
 def main() -> None:
+    print("Iniciando raspagem de livros...")
     df = scrape_books()
+    print(f"Raspagem concluída: {len(df)} registros coletados.")
+
     df = processar_dados(df)
+
     df = classificar_valor(df)
 
     dados_dir = Path("dados")
