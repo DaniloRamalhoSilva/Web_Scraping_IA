@@ -1,6 +1,14 @@
 
 # 📚 Web_Scraping_IA
 
+## 👨‍🏫 Integrantes 
+Matheus Hungaro Fidelis – RM:555677
+Tiago Toshio Kumagai Gibo – RM:556984
+Danilo Ramalho Silva – RM:555183
+João Vitor Pires da Silva – RM:556213
+Pablo Menezes Barreto – RM:556389
+Israel Dalcin Alves Diniz – RM:554668
+
 ## 📝 Descrição do Projeto
 O **Web_Scraping_IA** é um projeto de **RPA (Robotic Process Automation)** que utiliza **Python, Selenium WebDriver** e técnicas de **Inteligência Artificial** para realizar raspagem e análise inteligente de dados no site [Books to Scrape](https://books.toscrape.com).  
 O objetivo é automatizar a coleta de informações de livros, aplicar análise estatística/machine learning para identificar padrões e gerar relatórios detalhados.
